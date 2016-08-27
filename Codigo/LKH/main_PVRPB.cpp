@@ -217,4 +217,49 @@ int main (int argc, char** argv) {
 	datosPVRPB.close();
 
 
+	/*
+	*
+	*		 INICIO Creacion de Matriz de distancias.
+	*
+	*
+	*/
+
+
+	float Distancias[contCliente][contCliente];
+	float dist_calculada=0;
+
+	for(int i=0;i< contCliente ; i++){
+		for (int j = 0; j < contCliente; j++) {
+			if(j==i){
+				Distancias[i][j] = 0;
+				Distancias[j][i] = 0;
+				break;
+			}
+
+
+			dist_calculada = sqrt( pow(datosCliente[i].x - datosCliente[j].x ,2)
+			                     + pow(datosCliente[i].y - datosCliente[j].y ,2));
+
+		   Distancias[i][j] = dist_calculada;
+			Distancias[j][i] = dist_calculada;
+
+		}
+	}
+
+			/*
+			for (int i = 0; i < contCliente; i++) {
+				for (int j = 0; j < contCliente; j++) {
+					cout << "cliente " << i+1 << " con " << j+1 << " ---> " << Distancias[i][j] << endl;
+				}
+			}
+			*/
+
+
+	/*
+	*
+	*		 FIN Creacion de Matriz de distancias.
+	*
+	*
+	*/
+
 }
