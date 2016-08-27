@@ -103,11 +103,11 @@ int main (int argc, char** argv) {
 		if (cont==0) { //Se salta las 3 primeras lineas que no nos sirven
 
 			getline(datosPVRPB,linea);
-			cout << linea << endl;
+			//cout << linea << endl;
 			getline(datosPVRPB,linea);
-			cout << linea << endl;
+			//cout << linea << endl;
 			getline(datosPVRPB,linea);
-			cout << linea << endl;
+			//cout << linea << endl;
 			cont++;
 		}
 
@@ -116,21 +116,21 @@ int main (int argc, char** argv) {
 			datosPVRPB >> basura;
 			datosPVRPB >> basura;
 			datosPVRPB >> dim;
-			cout << dim << endl;
+			//cout << dim << endl;
 			datosPVRPB >> basura;
 			datosPVRPB >> basura;
 			datosPVRPB >> dep.capVh;
-			cout << dep.capVh << endl;
+			//cout << dep.capVh << endl;
 			datosPVRPB >> basura;
 			datosPVRPB >> basura;
 			datosPVRPB >> dep.cantVh;
-			cout << dep.cantVh << endl;
+			//cout << dep.cantVh << endl;
 			datosPVRPB >> basura;
 			datosPVRPB >> basura;
 			datosPVRPB >> diasAtencion;
-			cout << diasAtencion << endl;
+			//cout << diasAtencion << endl;
 			datosPVRPB >> linea; //leer la linea NODE_COORD_SECTION
-			cout << linea << endl;
+			//cout << linea << endl;
 			cont++;
 
 		}
@@ -144,7 +144,7 @@ int main (int argc, char** argv) {
 					datosPVRPB >> dep.x;
 					datosPVRPB >> dep.y;
 					contDim++;
-					cout << dep.numero << " " << dep.x << " " << dep.y << endl;
+					//cout << dep.numero << " " << dep.x << " " << dep.y << endl;
 
 				}
 
@@ -156,7 +156,7 @@ int main (int argc, char** argv) {
 					datosPVRPB >> clPivote.y;
 
 					datosCliente.push_back(clPivote);
-					cout << datosCliente[contCliente].numero << " " << datosCliente[contCliente].x << " " << datosCliente[contCliente].y << endl;
+					//cout << datosCliente[contCliente].numero << " " << datosCliente[contCliente].x << " " << datosCliente[contCliente].y << endl;
 					contCliente++;
 					contDim++;
 
@@ -171,12 +171,12 @@ int main (int argc, char** argv) {
 		if (cont==3){
 
 			datosPVRPB >> basura; //leer la linea NODE_DEMANDA_TIPO_7DIAS
-			cout << basura << endl;//NODE_DEMANDA_TIPO_7DIAS
+			//cout << basura << endl;//NODE_DEMANDA_TIPO_7DIAS
 			cont++;
 			contCliente = 0; //se igual el contador al numero del primer cliente.
 			getline(datosPVRPB,linea); //linea en blanco, error de no se que
 			getline(datosPVRPB,linea); //linea en blanco, error de no se que
-			cout << linea << endl;
+			//cout << linea << endl;
 
 		}
 
@@ -184,7 +184,7 @@ int main (int argc, char** argv) {
 
 			if (datosCliente[contCliente].numero == (contCliente+2)){
 
-				cout << datosCliente[contCliente].numero << " ";
+				//cout << datosCliente[contCliente].numero << " ";
 				datosPVRPB >> demcliente; //solo usado para limpiar la linea del numero del cliente
 
 				while (diasAtencion > contDatos) {
@@ -193,11 +193,11 @@ int main (int argc, char** argv) {
 					datosCliente[contCliente].demandaDia.push_back(demcliente);
 					datosPVRPB >> diacliente;
 					datosCliente[contCliente].dia.push_back(diacliente);
-					cout << datosCliente[contCliente].demandaDia[contDatos] << " " << datosCliente[contCliente].dia[contDatos] << " ";
+					//cout << datosCliente[contCliente].demandaDia[contDatos] << " " << datosCliente[contCliente].dia[contDatos] << " ";
 					contDatos++;
 
 				}
-				cout << endl;
+				//cout << endl;
 				contCliente++;
 				contDatos = 0;
 			}
@@ -216,7 +216,7 @@ int main (int argc, char** argv) {
 
 	datosPVRPB.close();
 
-
+//-----------------------------------------------------------------------------------------------------------------------
 	/*
 	*
 	*		 INICIO Creacion de Matriz de distancias.
@@ -261,5 +261,26 @@ int main (int argc, char** argv) {
 	*
 	*
 	*/
+
+//------------------------------------------------------------------------------------------------------------------------
+
+	/*
+	*
+	*
+	*		INICIO rutas iniciales con LKH
+	*
+	*/
+
+
+
+
+	/*
+	*
+	*
+	*		FIN rutas iniciales con LKH
+	*
+	*/
+
+
 
 }
