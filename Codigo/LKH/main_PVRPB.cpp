@@ -19,20 +19,22 @@ using namespace std;
 //Creamos las estructuras para almacenar los datos necesarios de la instancia a trabajar
 
 struct Cliente {
-	
+
 	int numero = 0;
 	int x = 0;
 	int y = 0;
-	vector <int> dia; /*si se quiere acceder al dia 1 de trabajo, 
-	se debe acceder a la posicion n-1, es decir a la posicion 0 */
-	vector <int> demandaDia; /*si se quiere acceder a la demanda del dia 1 de trabajo, 
-	se debe acceder a la posicion n-1, es decir a la posicion 0 */
+	vector <int> dia; /*si se quiere acceder al dia 1 de trabajo,
+							se debe acceder a la posicion n-1, es decir a la posicion 0 */
+
+	vector <int> demandaDia; /*si se quiere acceder a la demanda del dia 1 de trabajo,
+									se debe acceder a la posicion n-1, es decir a la posicion 0 */
+
 	//lo anterior aplica para generar las rutas por vehiculos en los respectivos dias.
 
 };
 
 struct Deposito {
-	
+
 	int numero = 0;
 	int x = 0;
 	int y = 0;
@@ -79,7 +81,7 @@ int main (int argc, char** argv) {
 	salida1_lkh.close();
 
 	nombre_lkh = argv[1]; //se vuelve a actualizar la variable en caso de error al haberla registrado anteriormente
-	
+
 	//Creamos el archivo donde iran las coordenadas para usar el lkh
 	ofstream salida2_lkh (nombre_lkh+".tsp");
 	string linea;
@@ -90,7 +92,7 @@ int main (int argc, char** argv) {
 	int dim = 0;
 	int cont = 0; //usado para saltar bloques de lectura
 	string basura;
-	int contDim = 1; //usado para almacenar los datos de cliente y deposito de manera ordenada 
+	int contDim = 1; //usado para almacenar los datos de cliente y deposito de manera ordenada
 	int contCliente = 0;
 	int contDatos = 0;
 	int demcliente = 0;
@@ -98,7 +100,7 @@ int main (int argc, char** argv) {
 
 	while (!datosPVRPB.eof()) { //comenzar la lectura de archivos para almacenar los datos.
 
-		if (cont==0) {
+		if (cont==0) { //Se salta las 3 primeras lineas que no nos sirven
 
 			getline(datosPVRPB,linea);
 			cout << linea << endl;
@@ -135,9 +137,9 @@ int main (int argc, char** argv) {
 
 		if (cont==2) {
 			while (contDim <= dim) {
-				
+
 				if (contDim == 1){
-					
+
 					datosPVRPB >> dep.numero;
 					datosPVRPB >> dep.x;
 					datosPVRPB >> dep.y;
@@ -180,7 +182,7 @@ int main (int argc, char** argv) {
 
 		if (cont == 4 and contCliente <= (dim-2)) {
 
-			if (datosCliente[contCliente].numero == (contCliente+2)){ 
+			if (datosCliente[contCliente].numero == (contCliente+2)){
 
 				cout << datosCliente[contCliente].numero << " ";
 				datosPVRPB >> demcliente; //solo usado para limpiar la linea del numero del cliente
@@ -188,7 +190,7 @@ int main (int argc, char** argv) {
 				while (diasAtencion > contDatos) {
 
 					datosPVRPB >> demcliente;
-					datosCliente[contCliente].demandaDia.push_back(demcliente);					
+					datosCliente[contCliente].demandaDia.push_back(demcliente);
 					datosPVRPB >> diacliente;
 					datosCliente[contCliente].dia.push_back(diacliente);
 					cout << datosCliente[contCliente].demandaDia[contDatos] << " " << datosCliente[contCliente].dia[contDatos] << " ";
@@ -198,7 +200,7 @@ int main (int argc, char** argv) {
 				cout << endl;
 				contCliente++;
 				contDatos = 0;
-			}	
+			}
 
 		}
 
@@ -213,10 +215,6 @@ int main (int argc, char** argv) {
 	}
 
 	datosPVRPB.close();
-
-
-
-
 
 
 }
